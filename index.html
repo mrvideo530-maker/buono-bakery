@@ -1,229 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buono Bakery — Freshly Baked Daily in Zinj</title>
-  
-  <!-- Tailwind CSS & FontAwesome -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Three.js for 3D Interactivity -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            cream: '#FDF7E7',
-            lightBrown: '#D49A6A',
-            deepBrown: '#3E2517',
-            darkAccent: '#2A180E'
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buono Bakery — Freshly Baked Daily in Zinj</title>
+    
+    <!-- Tailwind CSS & FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDF7E7',
+                        lightBrown: '#D49A6A',
+                        deepBrown: '#3E2517',
+                        accentGold: '#E6A100'
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
-
-  <style>
-    body { background-color: #FDF7E7; color: #3E2517; font-family: system-ui, -apple-system, sans-serif; }
-    .hero-canvas { width: 100%; height: 350px; }
-  </style>
+    </script>
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(62, 37, 23, 0.6), rgba(62, 37, 23, 0.7)), 
+                        url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
-<body class="bg-cream">
+<body class="bg-cream text-deepBrown font-sans antialiased">
 
-  <!-- Navbar -->
-  <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-lightBrown/20 px-6 py-4 flex justify-between items-center">
-    <div class="flex items-center space-x-3">
-      <div class="w-10 h-10 rounded-full bg-lightBrown flex items-center justify-center text-cream font-bold text-xl">B</div>
-      <span class="text-2xl font-bold tracking-wide text-deepBrown">Buono Bakery</span>
-    </div>
-    <div class="hidden md:flex space-x-6 text-sm font-semibold">
-      <a href="#menu" class="hover:text-lightBrown transition">Menu</a>
-      <a href="#about" class="hover:text-lightBrown transition">About Us</a>
-      <a href="#instagram" class="hover:text-lightBrown transition">Instagram</a>
-      <a href="#location" class="hover:text-lightBrown transition">Location</a>
-    </div>
-    <a href="https://wa.me/97366744555" target="_blank" class="bg-lightBrown text-white px-5 py-2.5 rounded-full font-bold hover:bg-deepBrown transition flex items-center space-x-2 shadow-md">
-      <i class="fab font-bold fa-whatsapp"></i>
-      <span>Order Now</span>
-    </a>
-  </nav>
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-cream/95 backdrop-blur shadow-sm border-b border-lightBrown/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <!-- Replace 'logo.png' with your actual logo image URL -->
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=100&auto=format&fit=crop&q=60" alt="Buono Bakery Logo" class="w-12 h-12 rounded-full object-cover border-2 border-accentGold shadow-md">
+                <span class="text-2xl font-bold tracking-tight text-deepBrown">Buono Bakery</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#menu" class="hover:text-lightBrown transition">Menu</a>
+                <a href="#about" class="hover:text-lightBrown transition">About Us</a>
+                <a href="#instagram" class="hover:text-lightBrown transition">Instagram Feed</a>
+                <a href="#location" class="hover:text-lightBrown transition">Location</a>
+            </nav>
 
-  <!-- Hero Section with 3D Canvas -->
-  <section class="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <span class="bg-lightBrown/20 text-deepBrown px-4 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest">
-        Artisanal Bakery • Zinj, Bahrain
-      </span>
-      <h1 class="text-4xl md:text-6xl font-black text-deepBrown leading-tight mt-4">
-        Freshly Baked Breads & Pastries Every Single Day.
-      </h1>
-      <p class="mt-4 text-lg text-deepBrown/80 leading-relaxed">
-        Experience authentic taste, golden-baked perfection, and handcrafted delights right here in Bu Ghazal, Zinj.
-      </p>
-
-      <!-- Quick Action Buttons -->
-      <div class="mt-8 flex flex-wrap gap-4">
-        <a href="https://wa.me/97366744555" target="_blank" class="bg-deepBrown text-cream px-6 py-3.5 rounded-2xl font-bold hover:bg-lightBrown transition shadow-lg flex items-center space-x-2">
-          <i class="fab fa-whatsapp text-xl"></i>
-          <span>WhatsApp (+973 66744555)</span>
-        </a>
-        <a href="tel:+97317483555" class="border-2 border-deepBrown text-deepBrown px-6 py-3.5 rounded-2xl font-bold hover:bg-deepBrown hover:text-cream transition flex items-center space-x-2">
-          <i class="fas fa-phone-alt"></i>
-          <span>Call 17483555</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- 3D Interactive Showcase Box -->
-    <div class="bg-white/60 p-6 rounded-3xl border border-lightBrown/30 shadow-xl text-center">
-      <div id="canvas-container" class="hero-canvas"></div>
-      <p class="text-xs text-lightBrown font-bold mt-2 uppercase tracking-wider">
-        <i class="fas fa-hand-pointer mr-1"></i> Interactive 3D Showcase (Drag to Rotate)
-      </p>
-    </div>
-  </section>
-
-  <!-- Bakery Menu Section -->
-  <section id="menu" class="max-w-7xl mx-auto px-6 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-extrabold text-deepBrown">Our Daily Fresh Bake</h2>
-      <p class="text-deepBrown/70 mt-2">Handcrafted using premium ingredients</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-      <!-- Item 1 -->
-      <div class="bg-white rounded-2xl overflow-hidden border border-lightBrown/20 shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Croissant" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="font-bold text-xl text-deepBrown">Golden Butter Croissants</h3>
-          <p class="text-sm text-deepBrown/70 mt-2">Flaky, buttery layers baked fresh every morning.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <span class="font-bold text-lg text-lightBrown">Fresh Daily</span>
-            <a href="https://wa.me/97366744555?text=I%20want%20to%20order%20Butter%20Croissants" class="bg-lightBrown/20 text-deepBrown px-4 py-2 rounded-xl text-sm font-bold hover:bg-lightBrown hover:text-white transition">Order</a>
-          </div>
+            <a href="https://wa.me/97366744555" target="_blank" class="bg-lightBrown hover:bg-deepBrown text-white px-5 py-2.5 rounded-full font-medium text-sm flex items-center gap-2 transition shadow-sm">
+                <i class="fa-brands font-bold fa-whatsapp text-lg"></i>
+                Order Now
+            </a>
         </div>
-      </div>
+    </header>
 
-      <!-- Item 2 -->
-      <div class="bg-white rounded-2xl overflow-hidden border border-lightBrown/20 shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Artisanal Bread" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="font-bold text-xl text-deepBrown">Artisanal Sourdough & Breads</h3>
-          <p class="text-sm text-deepBrown/70 mt-2">Crispy crust with soft, rich texture inside.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <span class="font-bold text-lg text-lightBrown">Fresh Daily</span>
-            <a href="https://wa.me/97366744555?text=I%20want%20to%20order%20Artisanal%20Breads" class="bg-lightBrown/20 text-deepBrown px-4 py-2 rounded-xl text-sm font-bold hover:bg-lightBrown hover:text-white transition">Order</a>
-          </div>
+    <!-- Hero Section (Classic Artisan Vibe) -->
+    <section class="hero-bg min-h-[75vh] flex items-center justify-center text-center text-white px-4 relative">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <span class="bg-accentGold/90 text-deepBrown px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Freshly Baked Daily in Zinj</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">Taste the Authentic Passion of Artisanal Baking</h1>
+            <p class="text-lg md:text-xl text-cream/90 max-w-2xl mx-auto font-light">From oven-fresh sourdough to rich delicious pastries, crafted daily using the finest ingredients in Bahrain.</p>
+            <div class="pt-4 flex justify-center gap-4">
+                <a href="#menu" class="bg-accentGold hover:bg-yellow-500 text-deepBrown font-bold px-8 py-3.5 rounded-full transition shadow-lg">Explore Our Menu</a>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <!-- Item 3 -->
-      <div class="bg-white rounded-2xl overflow-hidden border border-lightBrown/20 shadow-md hover:shadow-xl transition">
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Pastries" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="font-bold text-xl text-deepBrown">Special Pastries & Sweets</h3>
-          <p class="text-sm text-deepBrown/70 mt-2">Delicious pastries crafted for your sweet cravings.</p>
-          <div class="mt-6 flex justify-between items-center">
-            <span class="font-bold text-lg text-lightBrown">Fresh Daily</span>
-            <a href="https://wa.me/97366744555?text=I%20want%20to%20order%20Special%20Pastries" class="bg-lightBrown/20 text-deepBrown px-4 py-2 rounded-xl text-sm font-bold hover:bg-lightBrown hover:text-white transition">Order</a>
-          </div>
+    <!-- Menu Showcase -->
+    <section id="menu" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold">Our Daily Fresh Bake</h2>
+            <p class="text-gray-600 mt-2">Handcrafted using premium ingredients</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Delivery Partners Section -->
-  <section class="bg-lightBrown/10 py-12 px-6">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-2xl font-bold text-deepBrown">Prefer Instant Delivery?</h3>
-      <p class="text-sm text-deepBrown/70 mt-1">Order Buono Bakery via your favorite delivery platform in Bahrain</p>
-      
-      <div class="mt-6 flex justify-center space-x-4">
-        <button class="bg-red-500 text-white px-6 py-3 rounded-xl font-bold shadow-md hover:opacity-90 transition">
-          Order on Talabat
-        </button>
-        <button class="bg-yellow-500 text-deepBrown px-6 py-3 rounded-xl font-bold shadow-md hover:opacity-90 transition">
-          Order on Keeta
-        </button>
-      </div>
-    </div>
-  </section>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group border border-lightBrown/10">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Croissants">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Golden Butter Croissants</h3>
+                    <p class="text-gray-600 text-sm mb-4">Flaky, buttery layers baked fresh every morning.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-accentGold font-bold">Fresh Daily</span>
+                        <a href="https://wa.me/97366744555?text=Hi!%20I%20want%20to%20order%20Croissants" class="bg-cream hover:bg-lightBrown hover:text-white text-deepBrown px-4 py-2 rounded-xl text-xs font-bold transition">Order</a>
+                    </div>
+                </div>
+            </div>
 
-  <!-- Location & Footer -->
-  <footer id="location" class="bg-deepBrown text-cream py-12 px-6 mt-12">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-      <div>
-        <h4 class="text-xl font-bold text-lightBrown">Buono Bakery</h4>
-        <p class="text-sm text-cream/70 mt-2">Serving freshly baked perfection in Bahrain.</p>
-        <p class="text-xs text-lightBrown mt-4">Instagram: @buonobakery.bh</p>
-      </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group border border-lightBrown/10">
+                <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&q=80&w=600" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Breads">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Artisanal Sourdough & Breads</h3>
+                    <p class="text-gray-600 text-sm mb-4">Crispy crust with soft, rich texture inside.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-accentGold font-bold">Fresh Daily</span>
+                        <a href="https://wa.me/97366744555?text=Hi!%20I%20want%20to%20order%20Sourdough" class="bg-cream hover:bg-lightBrown hover:text-white text-deepBrown px-4 py-2 rounded-xl text-xs font-bold transition">Order</a>
+                    </div>
+                </div>
+            </div>
 
-      <div>
-        <h4 class="text-lg font-bold">Contact Details</h4>
-        <p class="text-sm text-cream/80 mt-2"><i class="fab fa-whatsapp mr-2 text-lightBrown"></i> +973 66744555</p>
-        <p class="text-sm text-cream/80 mt-1"><i class="fas fa-phone mr-2 text-lightBrown"></i> +973 17483555</p>
-      </div>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group border border-lightBrown/10">
+                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=600" class="w-full h-56 object-cover group-hover:scale-105 transition duration-500" alt="Cakes">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Special Pastries & Sweets</h3>
+                    <p class="text-gray-600 text-sm mb-4">Delicious pastries crafted for your sweet cravings.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-accentGold font-bold">Fresh Daily</span>
+                        <a href="https://wa.me/97366744555?text=Hi!%20I%20want%20to%20order%20Pastries" class="bg-cream hover:bg-lightBrown hover:text-white text-deepBrown px-4 py-2 rounded-xl text-xs font-bold transition">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div>
-        <h4 class="text-lg font-bold">Visit Store Location</h4>
-        <p class="text-sm text-cream/80 mt-2">Bu Ghazal, Zinj, Manama, Bahrain</p>
-        <p class="text-xs text-lightBrown mt-1">Google Plus Code: 6H5C+C6W</p>
-      </div>
-    </div>
-    
-    <div class="text-center text-xs text-cream/50 mt-12 pt-6 border-t border-cream/10">
-      © Buono Bakery. All Rights Reserved.
-    </div>
-  </footer>
+    <!-- Instagram Live Feed Section -->
+    <section id="instagram" class="py-16 bg-white/50 border-t border-b border-lightBrown/10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-2">Follow Us on Instagram</h2>
+            <p class="text-gray-600 mb-8"><a href="https://instagram.com/buonobakery.bh" target="_blank" class="text-lightBrown font-bold hover:underline">@buonobakery.bh</a> — Stay updated with our latest bakes!</p>
+            
+            <!-- Dynamic Feed Placeholder (Connects via Elfsight / Lightwidget) -->
+            <div class="bg-cream/60 border-2 border-dashed border-lightBrown/30 rounded-2xl p-8 max-w-4xl mx-auto">
+                <i class="fa-brands fa-instagram text-4xl text-lightBrown mb-3"></i>
+                <p class="font-medium text-sm text-deepBrown">Instagram Automatic Sync Box</p>
+                <p class="text-xs text-gray-500 mt-1">Connect your Instagram Access Token (Elfsight/Behold) to stream live posts right here automatically.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Three.js Interactive Script -->
-  <script>
-    const container = document.getElementById('canvas-container');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
+    <!-- Delivery Apps Section -->
+    <section class="py-12 bg-cream text-center">
+        <h2 class="text-2xl font-bold mb-4">Prefer Instant Delivery?</h2>
+        <p class="text-sm text-gray-600 mb-6">Order Buono Bakery via your favorite delivery platform in Bahrain</p>
+        <div class="flex justify-center gap-4">
+            <a href="https://www.talabat.com/bahrain" target="_blank" class="bg-[#FF5A00] text-white font-bold px-6 py-3 rounded-xl shadow hover:opacity-90 transition">Order on Talabat</a>
+            <a href="#" class="bg-[#FFC200] text-deepBrown font-bold px-6 py-3 rounded-xl shadow hover:opacity-90 transition">Order on Keeta</a>
+        </div>
+    </section>
 
-    // Create Interactive Gold 3D Shape (Bakery Mesh Representation)
-    const geometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
-    const material = new THREE.MeshStandardMaterial({ 
-      color: 0xD49A6A, 
-      roughness: 0.3, 
-      metalness: 0.2 
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    <!-- Footer -->
+    <footer id="location" class="bg-deepBrown text-cream py-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8 border-b border-cream/10 pb-8">
+            <div>
+                <h3 class="text-xl font-bold text-accentGold mb-3">Buono Bakery</h3>
+                <p class="text-sm text-cream/70">Serving freshly baked perfection in Bahrain.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-accentGold">Contact Details</h4>
+                <p class="text-sm"><i class="fa-brands fa-whatsapp"></i> +973 66744555</p>
+                <p class="text-sm mt-1"><i class="fa-solid fa-phone"></i> +973 17483555</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3 text-accentGold">Visit Store Location</h4>
+                <p class="text-sm text-cream/80">Bu Ghazal, Zinj, Manama, Bahrain</p>
+                <p class="text-xs text-cream/50 mt-1">Google Plus Code: 6H5C+C6W</p>
+            </div>
+        </div>
+        <p class="text-center text-xs text-cream/40 mt-8">&copy; Buono Bakery. All Rights Reserved.</p>
+    </footer>
 
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
-    scene.add(ambientLight);
-    
-    const pointLight = new THREE.PointLight(0xffffff, 1);
-    pointLight.position.set(5, 5, 5);
-    scene.add(pointLight);
-
-    camera.position.z = 4.5;
-
-    // Animation Loop
-    function animate() {
-      requestAnimationFrame(animate);
-      mesh.rotation.x += 0.008;
-      mesh.rotation.y += 0.01;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    });
-  </script>
 </body>
 </html>
